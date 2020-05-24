@@ -1,5 +1,6 @@
 package ru.rsue.gachkovsky;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +69,12 @@ public class BookListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(getActivity(),mBook.getTitle() + " нажата!",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(),mBook.getTitle() + " нажата!",Toast.LENGTH_SHORT).show();
+
+            //Intent intent = new Intent(getActivity(),MainActivity.class);
+            Intent intent = MainActivity.newIntent(getActivity(),mBook.getId());
+            startActivity(intent);
+
         }
     }
 

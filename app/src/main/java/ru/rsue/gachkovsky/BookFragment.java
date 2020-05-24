@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.UUID;
 import java.util.zip.DataFormatException;
 
 public class BookFragment extends Fragment {
@@ -30,7 +31,9 @@ public class BookFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        mBook = new Book();
+        //mBook = new Book();
+        UUID bookId = (UUID) getActivity().getIntent().getSerializableExtra(MainActivity.EXTRA_BOOK_ID);
+        mBook = BookLab.get(getActivity()).getBook(bookId);
     }
 
     @Override
@@ -39,6 +42,7 @@ public class BookFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_book,container,false);
 
         mTitleField = (EditText)v.findViewById(R.id.editText);
+        mTitleField.setText(mBook.getTitle());
         mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -67,6 +71,7 @@ public class BookFragment extends Fragment {
         mDataButton.setEnabled(false);
 
         mReadedCheckBox = (CheckBox)v.findViewById(R.id.book_readed);
+        mReadedCheckBox.setChecked(mBook.isReaded());
         mReadedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
