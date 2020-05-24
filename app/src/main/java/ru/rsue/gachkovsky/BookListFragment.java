@@ -24,6 +24,8 @@ public class BookListFragment extends Fragment {
 
     private BookAdapter mAdapter;
 
+    private int mPosition;
+
     @Override
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -74,6 +76,8 @@ public class BookListFragment extends Fragment {
             //Intent intent = new Intent(getActivity(),MainActivity.class);
             Intent intent = MainActivity.newIntent(getActivity(),mBook.getId());
             startActivity(intent);
+            mPosition = getAdapterPosition();
+
 
         }
     }
@@ -117,7 +121,8 @@ public class BookListFragment extends Fragment {
         }
         else
         {
-            mAdapter.notifyDataSetChanged();
+            //mAdapter.notifyDataSetChanged();
+            mAdapter.notifyItemChanged(mPosition);
         }
     }
 
