@@ -111,8 +111,21 @@ public class BookListFragment extends Fragment {
     {
         BookLab bookLab = BookLab.get(getActivity());
         List<Book> books = bookLab.getBooks();
-        mAdapter = new BookAdapter(books);
-        mBookRecyclerView.setAdapter(mAdapter);
+        if (mAdapter == null) {
+            mAdapter = new BookAdapter(books);
+            mBookRecyclerView.setAdapter(mAdapter);
+        }
+        else
+        {
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        updateUI();
     }
 
 }
