@@ -14,12 +14,14 @@ import java.util.UUID;
 public class MainActivity extends SingleFragmentActivity
 {
 
-    public static final String EXTRA_BOOK_ID = "ru.rsue.gachkovsky.bookdepository.book_id";
+    private static final String EXTRA_BOOK_ID = "ru.rsue.gachkovsky.bookdepository.book_id";
 
     @Override
     protected Fragment createFragment()
     {
-        return new BookFragment();
+        //return new BookFragment();
+        UUID bookId = (UUID) getIntent().getSerializableExtra(EXTRA_BOOK_ID);
+        return BookFragment.newInstance(bookId);
     }
 
     public static Intent newIntent (Context packageContext, UUID bookID)

@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.core.app.BundleCompat;
 import androidx.fragment.app.Fragment;
 
 import java.text.DateFormat;
@@ -21,9 +22,9 @@ import java.util.zip.DataFormatException;
 
 public class BookFragment extends Fragment {
 
+    private static final String ARG_BOOK_ID = "book_id";
     private Book mBook;
     private EditText mTitleField;
-
     private Button mDataButton;
     private CheckBox mReadedCheckBox;
 
@@ -32,7 +33,8 @@ public class BookFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
         //mBook = new Book();
-        UUID bookId = (UUID) getActivity().getIntent().getSerializableExtra(MainActivity.EXTRA_BOOK_ID);
+        //UUID bookId = (UUID) getActivity().getIntent().getSerializableExtra(MainActivity.EXTRA_BOOK_ID);
+        UUID bookId = (UUID) getArguments().getSerializable(ARG_BOOK_ID);
         mBook = BookLab.get(getActivity()).getBook(bookId);
     }
 
@@ -80,5 +82,14 @@ public class BookFragment extends Fragment {
         });
 
         return v;
+    }
+
+    public static BookFragment newInstance(UUID bookId)
+    {
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_BOOK_ID,bookId);
+        BookFragment fragment = new BookFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 }
