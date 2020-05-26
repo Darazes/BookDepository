@@ -74,7 +74,11 @@ public class BookListFragment extends Fragment {
             //Toast.makeText(getActivity(),mBook.getTitle() + " нажата!",Toast.LENGTH_SHORT).show();
 
             //Intent intent = new Intent(getActivity(),MainActivity.class);
-            Intent intent = MainActivity.newIntent(getActivity(),mBook.getId());
+
+            //Intent intent = MainActivity.newIntent(getActivity(),mBook.getId());
+
+            Intent intent = BookPagerActivity.newIntent(getActivity(),mBook.getId());
+
             startActivity(intent);
             mPosition = getAdapterPosition();
 
