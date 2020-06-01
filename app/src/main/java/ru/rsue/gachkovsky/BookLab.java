@@ -4,10 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
 import android.os.Environment;
-
-import androidx.annotation.RequiresApi;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -44,7 +41,6 @@ class BookLab {
         mDatabase.insert(BookDbSchema.BookTable.NAME, null, values);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     List<Book> getBooks() {
         List<Book> books = new ArrayList<>();
         try (BookCursorWrapper cursor = queryBooks(null, null)) {

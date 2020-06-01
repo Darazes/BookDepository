@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class BookPagerActivity extends AppCompatActivity {
-    private static final String EXTRA_BOOK_ID = "ru.rsue.borisov.bookdepository.book_id";
+    private static final String EXTRA_BOOK_ID = "ru.rsue.gachkovsky.bookdepository.book_id";
     private List<Book> mBooks;
 
     public static Intent newIntent(Context packageContext, UUID bookId) {

@@ -23,7 +23,7 @@ import java.util.GregorianCalendar;
 
 public class TimePickerFragment extends DialogFragment {
     static final String EXTRA_TIME =
-            "ru.rsue.borisov.bookdepository.time";
+            "ru.rsue.gachkovsky.bookdepository.time";
     private static final String ARG_TIME = "time";
     private TimePicker mTimePicker;
 

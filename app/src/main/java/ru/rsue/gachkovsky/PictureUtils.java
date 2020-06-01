@@ -1,4 +1,5 @@
 package ru.rsue.gachkovsky;
+
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;

@@ -6,7 +6,6 @@ import android.database.CursorWrapper;
 import java.util.Date;
 import java.util.UUID;
 
-import ru.rsue.borisov.Book;
 import ru.rsue.gachkovsky.Book;
 
 public class BookCursorWrapper extends CursorWrapper {
